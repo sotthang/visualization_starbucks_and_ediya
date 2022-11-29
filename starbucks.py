@@ -44,7 +44,8 @@ def analysis_of_cafes_around_starbucks(cafes):
     )
 
     cafes_around_starbucks_count = 0
-    starbucks_distance = 200
+    starbucks_distance = 50
+
     for x in df_starbucks.index:
         for y in df_cafes.index:
             starbucks_lat = df_starbucks.loc[x, "위도"]
@@ -70,9 +71,9 @@ def analysis_of_cafes_around_starbucks(cafes):
                 ).add_to(starbucks_cafes_distance_analysis_map)
                 cafes_around_starbucks_count += 1
 
-    starbucks_cafes_distance_analysis_map.save(f"스타벅스_{cafes}_{starbucks_distance}_analysis_cmark.html")
+    starbucks_cafes_distance_analysis_map.save(f"result/스타벅스_{cafes}_{starbucks_distance}_analysis_cmark.html")
 
-    print(f"스타벅스와 {cafes} 지점간 거리가 {starbucks_distance}m 이내 인 수 (중복 가능) :",
+    print(f"스타벅스와 {cafes} 지점간 거리가 {starbucks_distance}m 이내 인 수 :",
           cafes_around_starbucks_count,
           f"\n서울 {cafes} 매장 중 스타벅스 근처 {starbucks_distance}m 이내에 있는 비율 :",
           cafes_around_starbucks_count / len(df_cafes) * 100, "%"
